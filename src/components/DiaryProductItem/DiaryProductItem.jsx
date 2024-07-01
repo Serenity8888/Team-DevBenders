@@ -24,8 +24,8 @@ function DiaryProductItem({ title, weight, calories, id, date, onDeleteItem }) {
       </button>
       {showModal && (
         <ModalAlert
-          title="Ви дійсно хочете видалити продукт зі списку?"
-          btnTitle="Так, видалити"
+          title="Do you really want to remove a product from the list?"
+          btnTitle="Yes, delete"
           onBtnClick={onDeleteItem}
           id={id}
           date={date}

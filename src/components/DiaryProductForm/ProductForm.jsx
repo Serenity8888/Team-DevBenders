@@ -58,14 +58,14 @@ import debounce from 'lodash/debounce';
         <label className={s.name}>
           <input
             {...register('name', {
-              required:'Введіть більше 2 символів'
+              required:'Enter more than 2 characters'
             })}
             type="text"
             name="name"
             className={s.inputName}
             value={name}
             onChange={handleInputChange}
-            placeholder="Введіть назву продукту"
+            placeholder="Enter the name of the product"
             list="list"
           />
           {errors  && <span className={s.messageName}>{ errors.name?.message}</span>}
@@ -87,13 +87,13 @@ import debounce from 'lodash/debounce';
             className={s.inputGram}
             value={number}
             onChange={handleInputChange}
-            placeholder="Грами"
+            placeholder="Grams"
           />
-          <span className={s.messageNumber}>{errors.number?.type === "required" && 'Введіть дані'}</span>
-          <span className={s.messageNumber}>{errors.number?.type === "min" && "Невірне значення"}</span>
+          <span className={s.messageNumber}>{errors.number?.type === "required" && 'Enter your details'}</span>
+          <span className={s.messageNumber}>{errors.number?.type === "min" && "Invalid value"}</span>
         </label>
         <button type='submit' className={s.button}>
-          <p className={s.add}>Додати</p>
+          <p className={s.add}>Add</p>
           <span className={s.plus}>+</span>
         </button>
       </form> 

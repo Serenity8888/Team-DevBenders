@@ -12,32 +12,32 @@ import * as yup from 'yup';
 
 const schema = yup.object().shape({
   height: yup
-    .number('Значення має бути число')
-    .typeError('Введіть числове значення')
+    .number('The value must be a number')
+    .typeError('Enter a numeric value')
     .min(100, 'Specify a value greater than 100')
-    .max(250, 'Вкажіть значення менше 250')
-    .integer('Значення має бути ціле число')
+    .max(250, 'Specify a value less than 250')
+    .integer('The value must be an integer')
     .required("Mandatory field"),
   age: yup
-    .number('Значення має бути число')
-    .typeError('Введіть числове значення')
+    .number('The value must be a number')
+    .typeError('Enter a numeric value')
     .min(18, 'Specify a value greater than 18')
-    .max(100, 'Вкажіть значення менше 100')
-    .integer('Значення має бути ціле число')
+    .max(100, 'Specify a value less than 100')
+    .integer('The value must be an integer')
     .required("Mandatory field"),
   currentWeight: yup
-    .number('Значення має бути число')
-    .typeError('Введіть числове значення')
+    .number('The value must be a number')
+    .typeError('Enter a numeric value')
     .min(20, 'Specify a value greater than 20')
-    .max(500, 'Вкажіть значення менше 500')
-    .integer('Значення має бути ціле число')
+    .max(500, 'Specify a value less than 500')
+    .integer('The value must be an integer')
     .required("Mandatory field"),
   desiredWeight: yup
-    .number('Значення має бути число')
-    .typeError('Введіть числове значення')
+    .number('The value must be a number')
+    .typeError('Enter a numeric value')
     .min(20, 'Specify a value greater than 20')
-    .max(500, 'Вкажіть значення менше 500')
-    .integer('Значення має бути ціле число')
+    .max(500, 'Specify a value less than 500')
+    .integer('The value must be an integer')
     .required("Mandatory field"),
 });
 
@@ -85,7 +85,7 @@ function DailyCaloriesForm({
         validateOnChange={true}
         validateOnBlur={false}
         onSubmit={submitForm}
-        enableReinitialize /* потрібно, щоб Formik скидав форму, коли стартові значення змінюються */
+        enableReinitialize /* Formik needs to reset the form when the start values change */
       >
         {formik => {
           const { values, handleSubmit, errors, touched, isValid, dirty } =

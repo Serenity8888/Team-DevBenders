@@ -15,7 +15,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
  
 const schema = yup.object().shape({
-  email: yup.string().min(7,'Mail must be at least 3 characters').max(254,'Mail should not exceed 254 characters').required("Mandatory field").email('Електронна адреса має бути дійсною'),
+  email: yup.string().min(7,'Mail must be at least 3 characters').max(254,'Mail should not exceed 254 characters').required("Mandatory field").email('The email address must be valid'),
   password: yup.string().min(8,'The password must be at least 8 characters long').required("Mandatory field").max(55,'The password must not exceed 55 characters'),
 });
 

@@ -69,7 +69,7 @@ function App() {
           <Route
             path="calculator"
             element={
-              <PrivateRoute redirectTo="/login">
+              <PrivateRoute redirectTo="/calculator" >
                 <CalculatorPage />
               </PrivateRoute>
             }
@@ -77,7 +77,7 @@ function App() {
           <Route
             path="diary"
             element={
-              <PrivateRoute redirectTo="/login">
+              <PrivateRoute redirectTo="/diary" >
                 <DiaryPageView />
               </PrivateRoute>
             }

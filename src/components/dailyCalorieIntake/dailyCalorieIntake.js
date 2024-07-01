@@ -14,7 +14,7 @@ import { useNavigate } from 'react-router-dom';
     <div className={styles['modal-content']}>
       <div className={styles['modal-content__inner']}>
         <h2 className={styles['modal-content__title']}>
-          Your recommended daily caloorie intake is
+          Your recommended daily calorie intake is
         </h2>
         <p className={styles['modal-content__calories']}>
           {foodsList.calories} <span>kcal</span>
