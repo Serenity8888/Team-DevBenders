@@ -27,7 +27,7 @@ const AuthorizationForm = ({ isRegisterForm = true, onSubmit }) => {
   const handleFormSubmit = event => {
     event.preventDefault();
     if (isRegisterForm) {
-      onSubmit({ email, password, username: name });
+      onSubmit({ name, email, password });
       navigate('/calculator');
 
       return;
