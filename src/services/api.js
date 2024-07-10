@@ -12,7 +12,7 @@ axios.defaults.baseURL = process.env.REACT_APP_API_BASE_URL;
 export const AuthApi = {
   // registering user
   async registerNewUser(userData) {
-    const { data } = await axios.post('/auth/register', userData);
+    const { data } = await axios.post('/auth/signup', userData);
     return data;
   },
 
@@ -37,6 +37,24 @@ export const AuthApi = {
       url: `/auth/refresh`,
     });
     return data;
+  },
+};
+
+export const UserApi = {
+  async getUserInfo() {
+    const { data } = await axios.get('/user/current');
+    return data;
+  },
+};
+
+
+export const token = {
+  set(token) {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+    return token;
+  },
+  unSet() {
+    axios.defaults.headers.common.Authorization = '';
   },
 };
 
@@ -101,20 +119,4 @@ export async function getDayInfo(date) {
   return data;
 }
 
-export const UserApi = {
-  async getUserInfo() {
-    const { data } = await axios.get('/user');
-    return data;
-  },
-};
 
-
-export const token = {
-  set(token) {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-    return token;
-  },
-  unSet() {
-    axios.defaults.headers.common.Authorization = '';
-  },
-};
