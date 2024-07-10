@@ -1,38 +1,34 @@
 import axios from 'axios';
 import { omit } from 'lodash';
-// import { useSelector } from 'react-redux';
-// import { selectUserId } from 'redux/authorization/authSelectors';
 
-//  const userId = useSelector(selectUserId);
-// axios.defaults.baseURL = 'http://localhost/3000';
-// axios.defaults.baseURL ='https://slimmom-backend.goit.global';
 axios.defaults.baseURL = process.env.REACT_APP_API_BASE_URL;
 
-
 export const AuthApi = {
-  // registering user
+  // Registering user
   async registerNewUser(userData) {
     const { data } = await axios.post('/auth/signup', userData);
     return data;
   },
 
   async loginUser(signedUserData) {
-    // logging in user
+    // Logging in user
     const { data } = await axios.post('/auth/login', signedUserData);
     return data;
   },
 
   async logOutUser() {
-    // user logout
-    const { data } = await axios.post('/auth/logout');
+    // User logout
+    const { data } = await axios.post('/auth/logout', {
+      headers: { Authorization: axios.defaults.headers.common.Authorization }
+    });
     return data;
   },
 
   async refreshUser(sid, refreshToken) {
-    // refresh user
+    // Refresh user
     const { data } = await axios({
       data: { sid },
-      headers: { Authorization: refreshToken },
+      headers: { Authorization: `Bearer ${refreshToken}` }, // Correctly format the Authorization header
       method: 'post',
       url: `/auth/refresh`,
     });
@@ -42,24 +38,24 @@ export const AuthApi = {
 
 export const UserApi = {
   async getUserInfo() {
-    const { data } = await axios.get('/user/current');
+    const { data } = await axios.get('/users/current', {
+      headers: { Authorization: axios.defaults.headers.common.Authorization }
+    });
     return data;
   },
 };
 
-
 export const token = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-    return token;
   },
   unSet() {
-    axios.defaults.headers.common.Authorization = '';
+    delete axios.defaults.headers.common.Authorization;
   },
 };
 
 export const DailyApi = {
-  // info about unregistered user
+  // Info about unregistered user
   async getDailyRateInfo(userInfo) {
     const { data } = await axios.post('/daily-rate', userInfo);
     return data;
@@ -81,42 +77,23 @@ export const ProductApi = {
   },
 };
 
-// export const DayApi = {
-//   async productSearch(productInfo) {
-//     const { data } = await axios.get('/day', productInfo);
-//     return data;
-//   },
-
-//   async deleteProduct(productInfo) {
-//     const { data } = await axios.delete('/day', productInfo);
-//     return data;
-//   },
-
-//   async getDayInfo(dateInfo) {
-//     const { data } = await axios.post('/day/info', dateInfo);
-//     return data;
-//   },
-// };
-
-// Search and get a list of products by query
+// Export individual functions for product operations
 export async function productSearch(search) {
   const { data } = await axios.get('/product/', { params: { search } });
   return data;
 }
-// Post an eaten product
+
 export async function addProduct(productInfo) {
   const { data } = await axios.post('/day', productInfo);
   return data;
 }
-// Delete eaten product
+
 export async function deleteProduct(productData) {
-  const { data } = await axios.delete('/day', {data:productData});
+  const { data } = await axios.delete('/day', { data: productData });
   return data;
 }
-// Get info for day
+
 export async function getDayInfo(date) {
-  const { data } = await axios.post('/day/info', {date});
+  const { data } = await axios.post('/day/info', { date });
   return data;
 }
-
-

@@ -21,9 +21,6 @@ const AuthorizationForm = ({ isRegisterForm = true, onSubmit }) => {
   };
 
 
-
-
-
   const handleFormSubmit = event => {
     event.preventDefault();
     if (isRegisterForm) {

@@ -30,9 +30,9 @@ const authSlice = createSlice({
       .addCase(registerNewUser.fulfilled, (state, action) => {
         state.status = 'resolved';
         state.isLoggedIn = true;
-        state.userName = action.payload.username;
+        state.userName = action.payload.name;
         state.userEmail = action.payload.email;
-        state.userId = action.payload.user.id;
+        state.userId = action.payload.user._id;
       })
       .addCase(registerNewUser.rejected, rejectHandler)
       // ----- LogIn -----
@@ -40,12 +40,12 @@ const authSlice = createSlice({
       .addCase(loginUser.fulfilled, (state, action) => {
         state.status = 'resolved';
         state.isLoggedIn = true;
-        state.userName = action.payload.user.username;
+        state.userName = action.payload.user.name;
         state.userEmail = action.payload.user.email;
         state.token = action.payload.accessToken;
         state.refreshToken = action.payload.refreshToken;
         state.sid = action.payload.sid;
-        state.userId = action.payload.user.id;
+        state.userId = action.payload.user._id;
       })
       .addCase(loginUser.rejected, rejectHandler)
       // ----- Refresh -----
@@ -54,8 +54,8 @@ const authSlice = createSlice({
         state.status = 'resolved';
         state.isLoggedIn = true;
         state.isRefresh = true;
-        state.token = action.payload.newAccessToken;
-        state.refreshToken = action.payload.newRefreshToken;
+        state.token = action.payload.token;
+        state.refreshToken = action.payload.refreshToken;
         state.sid = action.payload.sid;
       })
       .addCase(refreshUser.rejected, rejectHandler)
@@ -76,9 +76,9 @@ const authSlice = createSlice({
       .addCase(getUserInfo.pending, pendingHandler)
       .addCase(getUserInfo.fulfilled, (state, action) => {
         state.status = 'resolved';
-        state.userName = action.payload.username;
+        state.userName = action.payload.name;
         state.userEmail = action.payload.email;
-        state.userId = action.payload.id;
+        state.userId = action.payload._id;
       })
       .addCase(getUserInfo.rejected, rejectHandler);
   },
