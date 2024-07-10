@@ -6,13 +6,13 @@ import {
   selectUserName,
 } from 'redux/authorization/authSelectors';
 import Line from 'images/line.svg';
-import { deleteUserInfro } from 'redux/diary/diarySlice';
+import { deleteUserInfo } from 'redux/diary/diarySlice';
 
 const UserInfo = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUserName);
   const handleChange = () => {
-    dispatch(deleteUserInfro());
+    dispatch(deleteUserInfo());
     dispatch(logoutUser());
   
   };
@@ -29,8 +29,8 @@ const UserInfo = () => {
         <NavLink
           to="/register"
           className={({ isActive }) => (isActive ? s.active : s.default)}
-          onClick={handleChange}
-        >
+          onClick={handleChange} 
+          >
           Exit
         </NavLink>
       </div>
