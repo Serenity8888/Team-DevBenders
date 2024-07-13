@@ -29,8 +29,8 @@ const UserInfo = () => {
         <NavLink
           to="/register"
           className={({ isActive }) => (isActive ? s.active : s.default)}
-          onClick={handleChange} 
-          >
+          onClick={handleChange}
+        >
           Exit
         </NavLink>
       </div>

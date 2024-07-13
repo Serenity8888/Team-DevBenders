@@ -21,10 +21,13 @@ const AuthorizationForm = ({ isRegisterForm = true, onSubmit }) => {
   };
 
 
+
+
+
   const handleFormSubmit = event => {
     event.preventDefault();
     if (isRegisterForm) {
-      onSubmit({ name, email, password });
+      onSubmit({ email, password, username: name });
       navigate('/calculator');
 
       return;

@@ -30,7 +30,7 @@ const authSlice = createSlice({
       .addCase(registerNewUser.fulfilled, (state, action) => {
         state.status = 'resolved';
         state.isLoggedIn = true;
-        state.userName = action.payload.name;
+        state.userName = action.payload.username;
         state.userEmail = action.payload.email;
         state.userId = action.payload.user._id;
       })
@@ -40,7 +40,7 @@ const authSlice = createSlice({
       .addCase(loginUser.fulfilled, (state, action) => {
         state.status = 'resolved';
         state.isLoggedIn = true;
-        state.userName = action.payload.user.name;
+        state.userName = action.payload.user.username;
         state.userEmail = action.payload.user.email;
         state.token = action.payload.accessToken;
         state.refreshToken = action.payload.refreshToken;
@@ -54,8 +54,8 @@ const authSlice = createSlice({
         state.status = 'resolved';
         state.isLoggedIn = true;
         state.isRefresh = true;
-        state.token = action.payload.token;
-        state.refreshToken = action.payload.refreshToken;
+        state.token = action.payload.newAccessToken;
+        state.refreshToken = action.payload.newRefreshToken;
         state.sid = action.payload.sid;
       })
       .addCase(refreshUser.rejected, rejectHandler)
@@ -76,7 +76,7 @@ const authSlice = createSlice({
       .addCase(getUserInfo.pending, pendingHandler)
       .addCase(getUserInfo.fulfilled, (state, action) => {
         state.status = 'resolved';
-        state.userName = action.payload.name;
+        state.userName = action.payload.username;
         state.userEmail = action.payload.email;
         state.userId = action.payload._id;
       })
